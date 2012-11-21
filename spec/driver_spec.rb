@@ -228,6 +228,11 @@ describe Capybara::Driver::Webkit do
       subject.current_url.should =~ /success=\%25true/
     end
 
+    it "visits a page with not allowed characters in URL" do
+      subject.visit("/hello/world?success[value]=true")
+      subject.current_url.should =~ /success\%5Bvalue\%5D=true/
+    end
+
     it "visits a page with an anchor" do
       subject.visit("/hello#display_none")
       subject.current_url.should =~ /hello#display_none/

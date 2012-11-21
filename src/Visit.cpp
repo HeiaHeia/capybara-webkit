@@ -7,7 +7,7 @@ Visit::Visit(WebPage *page, QObject *parent) : Command(page, parent) {
 }
 
 void Visit::start(QStringList &arguments) {
-  QUrl requestedUrl = QUrl::fromEncoded(arguments[0].toUtf8(), QUrl::StrictMode);
+  QUrl requestedUrl = QUrl::fromEncoded(arguments[0].toUtf8(), QUrl::TolerantMode);
   page()->currentFrame()->load(QUrl(requestedUrl));
 }
 
